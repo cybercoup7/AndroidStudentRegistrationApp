@@ -13,10 +13,10 @@
         android:theme="@style/Theme.AndroidStudentRegistrationApp"
         tools:targetApi="31">
         <activity
-            android:parentActivityName=".MainActivity"
-            android:label="Update Student Data"
             android:name=".StudentUpdate"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Update Student Data"
+            android:parentActivityName=".MainActivity" />
         <activity
 
             android:name=".AddStudent"

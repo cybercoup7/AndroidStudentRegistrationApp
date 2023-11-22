@@ -17,6 +17,7 @@ public class AddStudent extends AppCompatActivity {
     EditText phoneNumber;
     Button registerButton;
     String[] items = new String[]{"Male", "Female"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class AddStudent extends AppCompatActivity {
                 String prog = programme.getText().toString();
                 String cell = phoneNumber.getText().toString();
                 String gender = spinner.getSelectedItem().toString().trim();
-                dbHelper.addStudent(name,prog,gender,cell);
+                dbHelper.addStudent(name, prog, gender, cell);
                 fullName.setText("");
                 programme.setText("");
                 phoneNumber.setText("");

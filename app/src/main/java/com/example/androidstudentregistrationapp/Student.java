@@ -1,7 +1,6 @@
 package com.example.androidstudentregistrationapp;
 
-public class Student
-{
+public class Student {
     private String name;
     private String id;
     private String gender;

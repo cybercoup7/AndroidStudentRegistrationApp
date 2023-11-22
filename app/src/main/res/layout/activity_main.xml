@@ -8,12 +8,12 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-     android:paddingLeft="20sp"
-        android:paddingRight="20sp"
         android:id="@+id/recyclerview"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:paddingLeft="20sp"
         android:paddingTop="?attr/actionBarSize"
+        android:paddingRight="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

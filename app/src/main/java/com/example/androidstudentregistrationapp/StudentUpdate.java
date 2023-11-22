@@ -20,8 +20,9 @@ public class StudentUpdate extends AppCompatActivity {
     Button upDateButton, deleteButton, editButton;
     String id;
     String[] items = new String[]{"Male", "Female"};
- SqliteDbHelper sqliteDbHelper;
+    SqliteDbHelper sqliteDbHelper;
     Student student;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,22 +32,25 @@ public class StudentUpdate extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);
 
-
+        // Initialise  objects
         fullName = findViewById(R.id.full_name2);
         programme = findViewById(R.id.programme2);
         phoneNumber = findViewById(R.id.phone_number2);
         upDateButton = findViewById(R.id.register2);
-        deleteButton = findViewById(R.id.delete );
+        deleteButton = findViewById(R.id.delete);
         editButton = findViewById(R.id.edit);
         sqliteDbHelper = new SqliteDbHelper(this);
-         student = new Student();
+        student = new Student();
 
+        // call to get data from another activity
         getIntentData();
+        //set visibility and if enabled for text fields
         fullName.setEnabled(false);
         programme.setEnabled(false);
         phoneNumber.setEnabled(false);
         upDateButton.setVisibility(View.GONE);
 
+        // on click listener to enable editing
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,19 +61,15 @@ public class StudentUpdate extends AppCompatActivity {
                 upDateButton.setVisibility(View.VISIBLE);
             }
         });
-
+        // onclick listener to delete user/student
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 sqliteDbHelper.DeleteStudent(id);
-
-                
-
             }
         });
+        // on click listener to update student
         upDateButton.setOnClickListener(new View.OnClickListener() {
-
 
             @Override
             public void onClick(View v) {
@@ -89,14 +89,16 @@ public class StudentUpdate extends AppCompatActivity {
             }
         });
     }
-    void getIntentData(){
-        if(getIntent().hasExtra("id")){
+
+    // Get Extra intent data
+    void getIntentData() {
+        if (getIntent().hasExtra("id")) {
             fullName.setText(getIntent().getStringExtra("name"));
             programme.setText(getIntent().getStringExtra("programme"));
             phoneNumber.setText(getIntent().getStringExtra("cellNo"));
 
-           id = getIntent().getStringExtra("id");
-           spinner.setSelection(0);
+            id = getIntent().getStringExtra("id");
+            spinner.setSelection(0);
 
         }
     }

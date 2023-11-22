@@ -19,9 +19,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     SqliteDbHelper dbHelper;
     CustomAdaptor adaptor;
-//    ArrayList<String> name, gender, programme, phone;
-    ArrayList<Student> students ;
-
+    //    ArrayList<String> name, gender, programme, phone;
+    ArrayList<Student> students;
 
 
     @Override
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         dbHelper = new SqliteDbHelper(MainActivity.this);
-        students  = new ArrayList<>();
+        students = new ArrayList<>();
         displayData();
         adaptor = new CustomAdaptor(MainActivity.this, students);
 
@@ -44,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adaptor);
     }
 
-    void displayData(){
+    void displayData() {
         Cursor cursor = dbHelper.fetchStudents();
 
 
-        if(cursor.getCount() == 0){
-            Toast.makeText(MainActivity.this,"No records yet", Toast.LENGTH_SHORT).show();
-        }else {
-            while (cursor.moveToNext()){
-                Student  student =  new Student();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(MainActivity.this, "No records yet", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                Student student = new Student();
                 student.setId(cursor.getString(0));
                 student.setName(cursor.getString(1));
                 student.setGender(cursor.getString(2));
